@@ -71,7 +71,7 @@ static void MX_SDMMC1_SD_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	WAVE_FormatTypeDef info_HELLO_WAV = {0};
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -96,7 +96,16 @@ int main(void)
   MX_SDMMC1_SD_Init();
   MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
-
+  if (WAV_StorageParse() != FR_OK) {
+    while (1) {
+      /* Something happened */
+    }
+  }
+  if (WAV_GetFileInfo(WAV_GetFileDescriptor("HELLO.WAV"), &info_HELLO_WAV) != WAV_OK) {
+	  while (1) {
+		  /* Something happened */
+	  }
+  }
   /* USER CODE END 2 */
 
   /* Infinite loop */

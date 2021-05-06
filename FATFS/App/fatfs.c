@@ -139,11 +139,11 @@ WAV_StatusTypeDef WAV_GetFileInfo(uint16_t file_idx, WAVE_FormatTypeDef *info) {
 		if (f_read(&WavFile, info, sizeof(WAVE_FormatTypeDef),
 				(void*) &bytesread) == FR_OK) {
 			// uint32_t duration = info->FileSize / info->ByteRate;
-			return WAV_ERROR;
+			return WAV_OK;
 		}
 		f_close(&WavFile);
 	}
-	return WAV_OK;
+	return WAV_ERROR;
 }
 /* USER CODE END Application */
 
